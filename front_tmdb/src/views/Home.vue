@@ -1,7 +1,8 @@
 <template>
   <div>
-    <Navbar />
-    <div class="flex flex-wrap max-w-screen-lg m-auto">
+    <Header />
+    <!-- <Navbar /> -->
+    <div class="flex flex-wrap max-w-screen-lg m-auto mt-10">
       <div v-for="movie in movies" :key="movie.title" class="flex w-1/5 p-2">
         <Card :movie="movie" />
       </div>
@@ -10,6 +11,7 @@
 </template>
 
 <script setup>
+  import Header from '@/components/Header.vue'
   import Navbar from '@/components/Navbar.vue'
   import Card from '@/components/Card.vue'
 
