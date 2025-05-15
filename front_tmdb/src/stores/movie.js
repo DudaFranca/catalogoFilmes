@@ -22,7 +22,7 @@ export const useMoviesStore = defineStore('movies', {
     async searchMoviesAction(payload) {
       try {
         const response = await api.get('movies/search', {
-          search: payload,
+          params: { search: payload },
         });
         this.movies.value = response.data.data;
       } catch (error) {
@@ -33,8 +33,6 @@ export const useMoviesStore = defineStore('movies', {
     async getFavoriteMoviesAction() {
       try {
         const response = await api.get('favorite-movie');
-        console.log(response.data.data);
-
         this.favoriteMovies.value = response.data.data;
       } catch (error) {
         console.error('Erro ao buscar filmes favoritos:', error);
@@ -55,7 +53,9 @@ export const useMoviesStore = defineStore('movies', {
 
     async deleteFavoriteAction(payload) {
       try {
-        await api.delete(`favorite-movie/${payload.id}`);
+        console.log('payload: ', payload);
+
+        await api.delete(`favorite-movie/${payload}`);
       } catch (error) {
         console.error('Erro ao desfavoritar filme:', error);
       }

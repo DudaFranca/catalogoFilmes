@@ -4,7 +4,7 @@
     <div class="flex flex-wrap max-w-screen-lg m-auto mt-10">
       <div v-for="movie in movies" :key="movie.title" class="flex w-1/5 p-2">
         <Card :movie="movie" :favorites="favorites" />
-      </div>      
+      </div>
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@
     const movieStore = useMoviesStore();  
     
     const movies = computed( () => movieStore.movies ? movieStore.movies.value : '');
-    const favorites = computed( () => movieStore.favoriteMovies ? movieStore.favoriteMovies.value : '');
+    const favorites = computed( () => movieStore.favoriteMovies ? movieStore.favoriteMovies.value : '');    
 
     onMounted(async () => {
       movieStore.getMoviesAction();

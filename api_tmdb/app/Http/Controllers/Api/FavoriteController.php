@@ -10,11 +10,11 @@ class FavoriteController extends Controller
 {
     public function index()
     {
-        // $favorites = Favorite::all();
+        $favorites = Favorite::all();
 
-        // return response()->json([
-        //     'data' => $favorites,
-        // ]);
+        return response()->json([
+            'data' => $favorites,
+        ]);
     }
 
     public function store(Request $request)
