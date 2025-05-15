@@ -11,9 +11,9 @@
         <li>
           <router-link to="/">Filmes</router-link>
         </li>
-        <li>
+        <!-- <li>
           <router-link to="/series">Séries</router-link>
-        </li>
+        </li> -->
         <li>
           <router-link to="/favorites">Favoritos</router-link>
         </li>
@@ -31,11 +31,13 @@
 
 <script setup>
   import { ref } from 'vue'
+  import { useMoviesStore } from '@/stores/movie.js'
 
+  const movieStore = useMoviesStore();
   const searchInput = ref('');
 
   function search (e) {
-    console.log('Buscando: ', e);
+    movieStore.searchMoviesAction(e);
     searchInput.value = '';
   }
 </script>

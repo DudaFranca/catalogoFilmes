@@ -1,5 +1,11 @@
 <template>
   <div>
-    <h1>Favorito</h1>
+    <Header />
   </div>
 </template>
+
+<script setup>
+  import { ref, onMounted, computed } from 'vue'
+  import Header from '@/components/Header.vue'
+
+</script>
