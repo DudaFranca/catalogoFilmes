@@ -11,9 +11,6 @@
         <li>
           <router-link to="/">Filmes</router-link>
         </li>
-        <!-- <li>
-          <router-link to="/series">Séries</router-link>
-        </li> -->
         <li>
           <router-link to="/favorites">Favoritos</router-link>
         </li>
