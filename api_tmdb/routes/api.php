@@ -8,6 +8,7 @@ use App\Http\Controllers\Api\FavoriteController;
 // Listar todos os filmes
 Route::get('/movies', [MovieController::class, 'index']);
 Route::get('/movies/search', [MovieController::class, 'searchMovie']);
+Route::get('/movies/genres', [MovieController::class, 'genres']);
 Route::get('/favorite-movie', [FavoriteController::class, 'index']);
 Route::post('/favorite-movie/{id}', [FavoriteController::class, 'store']);
 Route::delete('/favorite-movie/{id}', [FavoriteController::class, 'destroy']);

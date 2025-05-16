@@ -42,23 +42,17 @@ class MovieController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function genres()
     {
-        //
-    }
+        $response = Http::withHeaders([
+            'accept' => 'application/json'
+        ])->get('https://api.themoviedb.org/3/genre/movie/list', [
+            'api_key'  => '84653e4663ec36cd834823697dcc42ee',
+            'language' => 'pt-BR',
+        ]);
 
-    public function show(string $id)
-    {
-        //
-    }
-
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    public function destroy(string $id)
-    {
-        //
+        return response()->json([
+            'data' => $response->json()['genres']
+        ]);
     }
 }

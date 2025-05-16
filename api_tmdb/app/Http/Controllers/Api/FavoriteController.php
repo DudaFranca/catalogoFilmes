@@ -8,9 +8,16 @@ use App\Models\Favorite;
 
 class FavoriteController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $favorites = Favorite::all();
+        $query = Favorite::query();
+
+        if ($request->has('genre_id')) {
+            $genreId = $request->input('genre_id');
+            $query->whereRaw("FIND_IN_SET(?, genre_ids)", [$genreId]);
+        }
+
+        $favorites = $query->get();
 
         return response()->json([
             'data' => $favorites,

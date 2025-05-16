@@ -7,6 +7,7 @@ export const useMoviesStore = defineStore('movies', {
     movies: ref([]),
     favoriteMovies: ref([]),
     favoriteMovie: ref([]),
+    genres: ref([]),
   }),
 
   actions: {
@@ -53,11 +54,30 @@ export const useMoviesStore = defineStore('movies', {
 
     async deleteFavoriteAction(payload) {
       try {
-        console.log('payload: ', payload);
-
         await api.delete(`favorite-movie/${payload}`);
       } catch (error) {
         console.error('Erro ao desfavoritar filme:', error);
+      }
+    },
+
+    async getGenresAction() {
+      try {
+        const response = await api.get('movies/genres');
+        this.genres.value = response.data.data;
+      } catch (error) {
+        console.error('Erro ao buscar gêneros:', error);
+      }
+    },
+
+    async getFilterFavoriteAction(genreId = null) {
+      try {
+        const response = await api.get('favorite-movie', {
+          params: { genre_id: genreId },
+        });
+        this.favoriteMovies.value = response.data.data;
+      } catch (error) {
+        console.error('Erro ao buscar filmes por gênero:', error);
+        return [];
       }
     },
   },
