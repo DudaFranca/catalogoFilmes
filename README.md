@@ -62,7 +62,7 @@ $ cd api_tmdb
 # Instale as dependências
 $ composer install
 
-# Configure o arquivo .env (exemplo)
+# Configure o arquivo .env
 DB_DATABASE=catalogofilmes
 
 # Execute as migrations
