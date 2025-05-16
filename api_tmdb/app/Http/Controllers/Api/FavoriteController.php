@@ -51,16 +51,6 @@ class FavoriteController extends Controller
         ]);
     }
 
-    public function show(string $id)
-    {
-        //
-    }
-
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
     public function destroy(string $id)
     {
         $favorite = Favorite::where('movie_id', $id)->first();
